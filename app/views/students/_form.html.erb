@@ -1,0 +1,15 @@
+<%if @student.errors.any? %>
+<h2>User not edited due to</h2>
+<ul><% @student.errors.full_messages.each do |t| %>
+     <li> <%= t %> </li>
+      <%end%>
+<%end%>
+<%=form_with(model: @student,local: true) do |t|%>
+        
+    <p> <%=  t.label :firstname%>
+   <%= t.text_field :firstname%></p>
+  <p> <%= t.label :roll%>
+    <%=t.text_field :roll%></p>
+    <p><%=t.submit("Saveedit")%></p>
+    <%end%>
+        
