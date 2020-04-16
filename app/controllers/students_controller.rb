@@ -11,6 +11,7 @@ before_action:set_articles, only: [:show,:destroy,:edit,:update]
     end
     def create
         @student=Student.new(set_params)
+        @student.course=Course.first
         # render plain: student.inspect
         if @student.save
             redirect_to @student
