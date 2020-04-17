@@ -1,0 +1,17 @@
+<%if @course.errors.any? %>
+<h2>Not signed in</h2>
+<ul><% @course.errors.full_messages.each do |t| %>
+     <li> <%=t%></li>               
+      <%end%>
+<%end%>
+<%=form_with(model: @course,local: true) do |t|%>
+        
+    <p> <%=  t.label :username%>
+   <%= t.text_field :username%></p>
+  <p> <%= t.label :email%>
+    <%=t.email_field :email%></p>
+    <p> <%= t.label :password%>
+    <%=t.password_field :password%></p>
+    <p><%=t.submit("Signup")%></p>
+    <%end%>
+        
