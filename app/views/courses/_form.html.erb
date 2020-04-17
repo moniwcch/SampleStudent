@@ -12,6 +12,6 @@
     <%=t.email_field :email%></p>
     <p> <%= t.label :password%>
     <%=t.password_field :password%></p>
-    <p><%=t.submit("Signup")%></p>
+    <p><%=t.submit(@course.new_record? ? ("Signup") : ("UpdateAccount"))%></p>
     <%end%>
         
