@@ -1,0 +1,9 @@
+<h1><%=@course.username%>'s profile</h1>
+<%=gravitor_for @course, size:200%>
+<h3>Students</h3>
+<% @course.students.each do |t| %>
+    <p><%=t.firstname%></p>
+    <p><%=@course.id%></p><br>
+    <%end%>
+
+
