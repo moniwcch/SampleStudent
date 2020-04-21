@@ -4,7 +4,7 @@ before_action:set_articles, only: [:show,:destroy,:edit,:update]
         
     end
     def index
-        @student=Student.all
+        @student=Student.paginate(page: params[:page],per_page: 5)
     end
     def new
         @student=Student.new

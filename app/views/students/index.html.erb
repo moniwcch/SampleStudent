@@ -1,4 +1,7 @@
 <h1>List of Students</h1>
+<div class="flickr_pagination">
+<%= will_paginate @student %>
+</div>
 <table>
 <thead>
 <tr>
@@ -19,3 +22,6 @@
 </body>
 </table>
 <p><%=link_to 'new',new_student_path%></p>
+<div class="flickr_pagination">
+<%= will_paginate @student %>
+</div>

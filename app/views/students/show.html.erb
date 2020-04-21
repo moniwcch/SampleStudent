@@ -1,6 +1,7 @@
 <h1>Student details</h1>
 <p>First name is <i><%= @student.firstname %></i></p>
 <p>Roll is <%= @student.roll %></p>
+<%= link_to @student.course.username,course_path(@student.course) %>
 <%= link_to 'edit',edit_student_path(@student.id)%>
 <%= link_to 'delete',student_path(@student.id),method: :delete,data: {confirm:"Are you sure?"}%>
 <%= link_to 'return to index',students_path()%>         

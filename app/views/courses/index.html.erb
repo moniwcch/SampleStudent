@@ -1,0 +1,8 @@
+<div class="flickr_pagination">
+<%= will_paginate @course %>
+<% @course.each do |t|%>
+<%=link_to t.username,course_path(t.id) %>
+<%=t.students.count%><br>
+<%end%>
+<div class="flickr_pagination">
+<%= will_paginate @course%>

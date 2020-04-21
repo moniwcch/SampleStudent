@@ -6,13 +6,13 @@ class CoursesController < ApplicationController
     @course=Course.new(course_params)
     if  @course.save
 
-        redirect_to students_path
+        redirect_to courses_path
     else
         render 'new'
     end    
     end
     def index
-        @course=Course.all
+        @course=Course.paginate(page: params[:page],per_page: 5)
     end
     def edit
         @course=Course.find(params[:id])
@@ -20,13 +20,14 @@ class CoursesController < ApplicationController
     def update
     @course=Course.find(params[:id])
     if  @course.update(course_params) 
-    redirect_to students_path
+    redirect_to @course
     else 
         render 'edit'
     end
     end
     def show
     @course=Course.find(params[:id])
+    @student=@course.students.paginate(page: params[:page],per_page: 5)
     end
 
     private
