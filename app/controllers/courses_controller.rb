@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     @course=Course.new(course_params)
     if  @course.save
 
-        redirect_to courses_path
+        redirect_to course_path(@course.id)
     else
         render 'new'
     end    

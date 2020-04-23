@@ -1,14 +1,19 @@
 <h1><%=@course.username%>'s profile</h1>
-<%=gravitor_for @course, size:200%>
+<%=gravatar_for @course, size:200%>
 <h3>Students</h3>
 <div class="flickr_pagination">
 <%= will_paginate @student %>
 <% @student.each do |t| %>
-    <p><%=t.firstname%></p>
-    <p><%=@course.id%></p><br>
+    <p><%=link_to t.firstname,student_path(t.id)%></p>
+    <p><%=@course.students.count%></p><br>
+    
+    <% if logged_in? && current_user == @course%>
  
-<%end%>
+
+
 <p><%=link_to "EdityourProfile",edit_course_path(@course)%></p>
 <p><%=link_to "logout",logout_path,method: :delete%></p>
+<%end%>
+<%end%>
 <div class="flickr_pagination">
 <%= will_paginate @student %>

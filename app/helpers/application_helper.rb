@@ -1,9 +1,19 @@
 module ApplicationHelper
-    def gravitor_for(user,options={size:80})
-        email_address=user.email.downcase
-        hash = Digest::MD5.hexdigest(email_address)
-        size=options[:size]
-        gravitor_url = "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
-        image_tag(gravitor_url,alt:user.username)
-end 
-end
+
+    def gravatar_for(user, options = { size: 80})
+      email_address = user.email.downcase
+      hash = Digest::MD5.hexdigest(email_address)
+      size = options[:size]
+      gravatar_url = "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
+      image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block")
+    end
+  
+    def current_user
+      @current_user ||= Course.find(session[:course_id]) if session[:course_id]
+    end
+  
+    def logged_in?
+      !!current_user
+    end
+  
+  end
