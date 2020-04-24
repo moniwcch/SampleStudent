@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     def new
-    user=Course.new()
+
     end
     def create
         user=Course.find_by(email: params[:session][:email].downcase)
@@ -14,6 +14,6 @@ class SessionsController < ApplicationController
     end
     def destroy
         session[:course_id]=nil
-        redirect_to students_path
+        redirect_to root_path
     end
 end

@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+    before_action:req_same_user,except: [:new,:create,:show,:index]
     def new
         @course=Course.new
     end
@@ -33,5 +34,10 @@ class CoursesController < ApplicationController
     private
     def course_params
     params.require(:course).permit(:username,:email,:password)
+    end
+    def req_same_user
+    if !logged_in? || current_user != @course
+        redirect_to courses_path()
+    end
     end
 end
