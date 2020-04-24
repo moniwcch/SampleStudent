@@ -16,7 +16,7 @@ before_action:same_user,only: [:edit,:update,:destroy]
     end
     def create
         @student=Student.new(set_params)
-        @student.course=Course.first
+        @student.course=current_user
         # render plain: student.inspect
         if @student.save
             redirect_to @student
