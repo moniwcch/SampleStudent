@@ -3,6 +3,9 @@
 <% @course.each do |t|%>
 <%=link_to t.username,course_path(t.id) %>
 <%=t.students.count%><br>
+<% if logged_in? && current_user.admin? %>
+<%=link_to 'delete_user',course_path(t.id),method: :delete%>
+<%end%>
 <%end%>
 <div class="flickr_pagination">
 <%= will_paginate @course%>

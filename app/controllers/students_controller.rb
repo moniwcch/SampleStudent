@@ -45,7 +45,7 @@ before_action:same_user,only: [:edit,:update,:destroy]
         params.require(:student).permit(:firstname, :roll)
     end
     def same_user
-        if current_user != @student.course
+        if current_user != @student.course and !current_user.admin?
             redirect_to root_path()
     end 
 end

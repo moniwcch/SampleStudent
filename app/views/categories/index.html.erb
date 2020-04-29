@@ -1,0 +1,5 @@
+<p>Categories Index</p>
+<% @category.each do |t| %>
+    <%=link_to t.name,category_path(t.id)%><br> 
+    
+    <%end%>
