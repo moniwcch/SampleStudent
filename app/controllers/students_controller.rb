@@ -14,6 +14,7 @@ before_action:same_user,only: [:edit,:update,:destroy]
     def new
         @student=Student.new
     end
+
     def create
         @student=Student.new(set_params)
         @student.course=current_user
@@ -42,7 +43,7 @@ before_action:same_user,only: [:edit,:update,:destroy]
         @student=Student.find(params[:id])
      end
      def set_params
-        params.require(:student).permit(:firstname, :roll)
+        params.require(:student).permit(:firstname, :roll,category_ids:[])
     end
     def same_user
         if current_user != @student.course and !current_user.admin?
@@ -51,3 +52,4 @@ before_action:same_user,only: [:edit,:update,:destroy]
 end
 
 end 
+ 

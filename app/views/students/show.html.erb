@@ -1,6 +1,9 @@
 <h1>Student details</h1>
 <p>First name is <i><%= @student.firstname %></i></p>
 <p>Roll is <%= @student.roll %></p>
+<% if @student.categories.any? %>
+<p> Categories <%= render @student.categories  %></p>
+<%end%> 
 <%if logged_in? && (current_user==@student.course || current_user.admin?)%>
 <%= link_to @student.course.username,course_path(@student.course) %>
 <%= link_to 'edit',edit_student_path(@student.id)%>

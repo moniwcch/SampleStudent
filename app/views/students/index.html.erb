@@ -14,7 +14,9 @@
    <% @student.each do |t|%>
 <tr> <td><%=t.firstname%></td>
  <td><%=t.roll%></td>
+
  <td><%=link_to 'show',student_path(t.id)%></td>
+ <td><p>Categories<%=render t.categories %></td></p>
  <% if logged_in? && (current_user == t.course || current_user.admin?)%>
  <td><%=link_to 'delete',student_path(t.id),method: :delete%></td>
  <td><%=link_to 'edit',edit_student_path(t.id)%></td></tr><br>

@@ -1,0 +1,7 @@
+<%=form_with(model:@category,local:true) do |t|%>
+    <br>
+<%=t.label :name%><br><br>
+<%=t.text_field :name%><br>
+<br>
+<%=t.submit%>
+<%end%>

@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
     end
     def show
         @category=Category.find(params[:id])
+        # @category_students=@category.students
     end
     def create
         @category=Category.new(params.require(:category).permit(:name))
@@ -17,6 +18,17 @@ class CategoriesController < ApplicationController
         render 'new'
        end
     end
+    def edit
+        @category=Category.find(params[:id])
+    end
+    def update
+        @category=Category.find(params[:id])
+        if @category.update(params.require(:category).permit(:name))
+            redirect_to category_path(@category)
+        else
+            render 'edit'
+    end
+end
 private 
  def require_admin
  if !logged_in? || (logged_in? && !current_user.admin?)

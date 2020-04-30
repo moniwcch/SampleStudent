@@ -1,2 +1,5 @@
 <p>Category</p>
 <%=@category.name %>
+<%if @category.students.any?%>
+<%=render @category.students%>
+<%end%>
